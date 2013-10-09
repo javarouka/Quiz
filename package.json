@@ -1,0 +1,29 @@
+{
+  "name": "javacafe-devon-quiz",
+  "version": "1.0.0",
+  "description": "play quiz at dev on",
+  "main": "build/app.js",
+  "dependencies": {
+    "socket.io": "~0.9.15",
+    "express": "~3.3.4",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "lodash": "~2.2.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-qunit": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "connect-livereload": "~0.2.0",
+    "grunt-open": "~0.2.0",
+    "grunt-contrib-clean": "~0.5.0"
+  },
+  "repository": "https://github.com/javarouka/Quiz.git",
+  "author": "javarouka@gmail.com",
+  "license": "MIT"
+}
