@@ -8,8 +8,6 @@ module.exports = function(grunt) {
     livePort = 9000,
     testPort = 9001,
     banner = "/*\n <%= pkg.name %> - Dev on Quiz\n" +
-      " Copyright 2013.08 \n" +
-      " Dual licensed under the MIT or GPL Version 2 licenses\n" +
       " create date: <%= grunt.template.today('yyyy-mm-dd') %> */",
     testURLs = [
       'http://'+testHostURL+':'+testPort+'/test.html'
@@ -18,7 +16,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
-      build: [  ]
+      build: []
     },
     copy: {
       build: {
@@ -26,15 +24,15 @@ module.exports = function(grunt) {
         ]
       }
     },
-    uglify: {
-      options: {
-        banner: banner
-      },
-      build: {
-        src: [ 'app/js/app.js' ],
-        dest: [ './app/js/*.js' ]
-      }
-    },
+//    uglify: {
+//      options: {
+//        banner: banner
+//      },
+//      build: {
+//        src: [ 'app/js/app.js' ],
+//        dest: [ './app/js/*.js' ]
+//      }
+//    },
     watch: {
       files: [
         'app/**/*.html',
@@ -106,7 +104,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-open');
 
   grunt.registerTask('server',
-    ['clean', 'uglify', 'connect:live', 'open', 'watch']);
+    ['clean', /*'uglify',*/ 'connect:live', 'open', 'watch']);
 
   grunt.registerTask('test',
     ['clean', 'copy', 'jshint', 'connect:test', 'qunit']);
