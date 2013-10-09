@@ -5,11 +5,17 @@
  * To change this template use File | Settings | File Templates.
  */
 var express = require('express'),
-    passport = require('passport');
+  passport = require('passport'),
+  io = require('socket.io');
 
 var app = express(),
-    route = require("./route.js"),
-    auth = require('./auth.js');
+  route = require("./route.js"),
+  auth = require('./auth.js');
+
+var config = {
+  appPort: 1980,
+  staticPath: __dirname + '/../app'
+};
 
 app.use(express.logger('dev'));
 
@@ -19,21 +25,21 @@ app.use(function staticsPlaceholder(req, res, next) {
 
 app.use(express.cookieParser());
 app.use(express.session({
- secret: 'I am a full-stack developer'
+  secret: 'I am a full-stack developer'
 }));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(app.router);
 
 app.use(express.csrf({
-  value: auth.csrf}
+    value: auth.csrf}
 ));
 app.use(function(req, res, next) {
   res.cookie('XSRF-TOKEN', req.session._csrf);
   next();
 });
 
-app.use(app.router);
-app.use(express.static(__dirname + '/../app'));
+app.use(express.static(config.staticPath));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,5 +55,9 @@ route.init(app, auth, express);
 
 module.exports = app;
 
-// start app.
-app.listen(1980);
+// start app and websocket.
+var server = app.listen(config.appPort);
+var ioConn = io.listen(server);
+ioConn.sockets.on('connection', function (socket) {
+  socket.emit('onConnection', { $s: socket });
+});
