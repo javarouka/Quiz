@@ -9,36 +9,99 @@
 var _ = require('lodash');
 
 var quiz = [
-  {
-    id: 1,
-    title: '이 중 다른 셋과 동작이 다른 언어 하나를 고르시오',
-    answers: [
-      "Java",
-      "Go",
-      "Groovy",
-      "Scala"
-    ],
-    solution: 1
-  },
-  {
-    id: 1,
-    title: '자바스크립트의 특성이 아닌 것을 고르시오',
-    answers: [
-      "객체지향 언어",
-      "함수형 언어",
-      "선언형 언어",
-      ""
-    ],
-    solution: 1
-  }
+    {
+        id: 1,
+        title: '이 중 다른 셋과 동작이 다른 언어 하나를 고르시오',
+        answers: [
+            "Java",
+            "Go",
+            "Groovy",
+            "Scala"
+        ],
+        solution: 1
+    },
+    {
+        id: 2,
+        title: '자바스크립트의 특성이 아닌 것을 고르시오',
+        answers: [
+            "일급 객체는 함수",
+            "영향을 준 언어는 Self 언어와 Scheme 언어",
+            "선언형 프로그래밍 언어",
+            "객체 타입과 기본 타입이 함께 사용"
+        ],
+        solution: 3
+    },
+    {
+        id: 3,
+        title: 'HTML의 약자는',
+        answers: [
+            "High Text Module Language",
+            "Hiper Text Markup Language",
+            "Higher Tool Major Language",
+            "How To Make Love"
+        ],
+        solution: 2
+    },
+    {
+        id: 4,
+        title: 'C++의 개발자는',
+        answers: [
+            "귀도 반 로섬",
+            "제임스 고슬링",
+            "데니스 리치",
+            "비야네 스트로스트럽"
+        ],
+        solution: 2
+    },
+    {
+        id: 5,
+        title: 'Java언어에서 다음 중 런타임 오류가 발생하는 코드는?',
+        answers: [
+            "<pre><code>List&lt;Number&gt; n = new ArrayList&lt;Number&gt;();\n" +
+            "n.add(20);\n" +
+            "</code></pre>",
+            "<pre><code>List&lt;Number&gt; a = new ArrayList&lt;Number&gt;();\n" +
+            "List&lt;String&gt; b = new ArrayList&lt;String&gt;();\n" +
+            "if(a.getClass() != b.getClass()) {" +
+                "\tthrow new RuntimeException();" +
+            "}" +
+            "</code></pre>",
+            "<pre><code>int Integer = 3;" +
+            "(Integer) - (Integer)3" +
+            "</code></pre>",
+            "<pre><code>new OutputStreamReader(System.out, 'UTF-8').write(''.getBytes())</code></pre>"
+        ],
+        solution: 1
+    }
 ];
 
 module.exports = {
-  findById: function(id) {
-    return _.clone(_.find(users, function(user) { return user.id === id }));
-  },
+    list: function() {
+        return quiz.map(function(val) {
+            var c = _.clone(val);
+            delete c.solution;
+            return c;
+        });
+    },
+    check: function(answers) {
+        var score = 0, solution = 0;
 
-  findByUsername: function(username) {
-    return _.clone(_.find(users, function(user) { return user.username === username; }));
-  }
+        if(!Array.isArray(answers)) {
+            answers = answers.split(',');
+        }
+
+        for(var i= 0, len = quiz.length; i < len; i++) {
+            solution = quiz[i].solution;
+            if(solution === answers[i]) {
+                score++;
+            }
+        }
+
+        return score * 10;
+    },
+    findById: function(id) {
+        return _.clone(_.find(quiz, function(q) {
+            return q.id === id
+        }));
+    }
 };
