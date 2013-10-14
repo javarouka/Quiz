@@ -1,21 +1,16 @@
 /**
- * Created with JetBrains WebStorm.
+ * 퀴즈 Repository
  * User: javarouka
  * Date: 13. 10. 9
  * Time: 오후 9:09
- * To change this template use File | Settings | File Templates.
  */
 
-var quiz = require("./models/quiz");
+var quiz = require("./repository/quiz");
 
-exports.init = function(app, auth, express) {
+exports.init = function(app, auth/*, express*/) {
     app.get('/', function(req, res) {
-        var redirect = "/index.html";
-        if(req.isAuthenticated()) {
-            redirect = '/quiz.html'
-        }
         res.writeHead(302, {
-            'Location': redirect
+            'Location': (!req.isAuthenticated() ? "/index.html" : "/quiz.html")
         });
         res.end();
     });

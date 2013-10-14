@@ -9,7 +9,7 @@
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('./models/admins');
+var User = require('./repository/admins');
 
 module.exports = {
     localStrategy: new LocalStrategy(
