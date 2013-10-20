@@ -2,13 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta name="format-detection" content="telephone=no">
     <title>Hello JavaCafe Quiz</title>
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="components/requirejs/require.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
 <div id="top-wrapper">
@@ -17,7 +19,7 @@
         <p>아이디를 입력하고, 퀴즈를 시작해봅시다!</p>
     </header>
     <section>
-        <form role="form">
+        <form class="entry-form" role="form">
             <div class="form-group">
                 <label for="nickname">닉네임</label>
                 <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Enter Nick Name">
@@ -34,7 +36,7 @@
                     </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Go Go Go!</button>
+            <button type="button" class="open-quiz btn btn-success">Go Go Go!</button>
         </form>
     </section>
     <section id="middle-contents"></section>

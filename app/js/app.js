@@ -1,41 +1,45 @@
 /**
- * Created with JetBrains WebStorm.
- * User: javarouka
- * Date: 13. 10. 9
- * Time: 오후 9:02
- * To change this template use File | Settings | File Templates.
+ * Created by javarouka on 13. 10. 20.
  */
-requirejs.config({
-    baseUrl: "./",
-    paths: {
-        'jquery': [
-            'components/jquery/jquery.min'
-        ],
-        'underscore': [
-            'components/underscore/underscore-min'
-        ],
-        'bootstrap': [
-            'components/bootstrap/dist/js/bootstrap.min'
-        ]
-    },
-    shim: {
-        'underscore': {
-            exports: '_'
-        },
-        'bootstrap': {
-            deps: ['jquery'],
-            exports: 'jquery'
+define([
+    "jquery",
+    "underscore",
+    "js/model/quiz",
+    "js/model/user",
+    "js/view/main",
+    "js/utils"
+], function($, _, Quiz, User, MainView, Utils) {
+
+    var exports = {};
+    var $el = MainView.$el;
+
+    var loadedQuiz = false;
+
+    function bindEvent() {
+        $el.entryForm.on("click", "button.open-quiz", function() {
+            goQuiz.call(exports);
+            $el.entryForm.slideUp('fast');
+        });
+    }
+
+    function renderQuizList(data) {
+        MainView.renderQuizList(data);
+        loadedQuiz = true;
+    }
+
+    function goQuiz() {
+        if(loadedQuiz) {
+
+        }
+        else {
+            Quiz.list(renderQuizList, exports);
         }
     }
+
+    exports.init = function () {
+        bindEvent.apply(exports);
+    };
+
+    return exports;
+
 });
-require(
-    [
-        "jquery", "underscore", "bootstrap"
-    ],
-    function($, _) {
-        console.log("init app...");
-    },
-    function errorHandler(err) {
-        console.log(err);
-    }
-);

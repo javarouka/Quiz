@@ -62,11 +62,11 @@ var quiz = [
             "</code></pre>",
             "<pre><code>List&lt;Number&gt; a = new ArrayList&lt;Number&gt;();\n" +
             "List&lt;String&gt; b = new ArrayList&lt;String&gt;();\n" +
-            "if(a.getClass() != b.getClass()) {" +
-                "\tthrow new RuntimeException();" +
+            "if(a.getClass() != b.getClass()) {\n" +
+                "\tthrow new RuntimeException();\n" +
             "}" +
             "</code></pre>",
-            "<pre><code>int Integer = 3;" +
+            "<pre><code>int Integer = 3;\n" +
             "(Integer) - (Integer)3" +
             "</code></pre>",
             "<pre><code>new OutputStreamReader(System.out, 'UTF-8').write(''.getBytes())</code></pre>"
