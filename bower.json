@@ -13,7 +13,8 @@
     "jquery": "*",
     "bootstrap": "*",
     "underscore": "*",
-    "requirejs": "*"
+    "requirejs": "*",
+    "crosscutting": "*"
   },
   "license": "MIT",
   "ignore": [

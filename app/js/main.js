@@ -12,6 +12,9 @@ requirejs.config({
         'jquery': [
             'components/jquery/jquery.min'
         ],
+        'crosscutting': [
+            'components/crosscutting/build/crosscutting.min'
+        ],
         'underscore': [
             'components/underscore/underscore-min'
         ],
@@ -23,6 +26,9 @@ requirejs.config({
         'underscore': {
             exports: '_'
         },
+        'crosscutting': {
+            exports: 'crosscutting'
+        },
         'bootstrap': {
             deps: ['jquery'],
             exports: 'jquery'
@@ -31,12 +37,15 @@ requirejs.config({
 });
 require(
     [
-        "app", "underscore", "bootstrap"
+        "app", "crosscutting", "underscore", "bootstrap"
     ],
-    function(App) {
+    function(App, Crosscutting) {
+        Crosscutting.before(App, true, function(option) {
+            console.log("execute ## " + option.method);
+        });
         App.init();
     },
     function errorHandler(err) {
-        console.log(err);
+        (console.error || console.log).call(console, err);
     }
 );

@@ -16,15 +16,16 @@ define([
     var loadedQuiz = false;
 
     function bindEvent() {
-        $el.entryForm.on("click", "button.open-quiz", function() {
+        $el.entryForm.on("click", "button.open-quiz", function(e) {
             goQuiz.call(exports);
-            $el.entryForm.slideUp('fast');
         });
     }
 
     function renderQuizList(data) {
-        MainView.renderQuizList(data);
-        loadedQuiz = true;
+        MainView.renderQuizList(data, function() {
+            $el.entryForm.slideUp('fast');
+            loadedQuiz = true;
+        });
     }
 
     function goQuiz() {
@@ -32,7 +33,11 @@ define([
 
         }
         else {
-            Quiz.list(renderQuizList, exports);
+            Utils.showIndicator();
+            Quiz.list(function(data) {
+                renderQuizList(data);
+                Utils.hideIndicator();
+            }, exports);
         }
     }
 
