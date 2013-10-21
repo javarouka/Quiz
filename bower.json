@@ -10,7 +10,7 @@
     "quiz", "javacafe"
   ],
   "dependencies": {
-    "jquery": "*",
+    "jquery": "1.9.1",
     "bootstrap": "*",
     "underscore": "*",
     "requirejs": "*",

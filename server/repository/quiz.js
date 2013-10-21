@@ -57,19 +57,19 @@ var quiz = [
         id: 5,
         title: 'Java언어에서 다음 중 런타임 오류가 발생하는 코드는?',
         answers: [
-            "<pre><code class='java'>List&lt;Number&gt; n = new ArrayList&lt;Number&gt;();\n" +
+            "<pre class='code'><code class='java'>List&lt;Number&gt; n = new ArrayList&lt;Number&gt;();\n" +
             "n.add(20);\n" +
             "</code></pre>",
-            "<pre><code>List&lt;Number&gt; a = new ArrayList&lt;Number&gt;();\n" +
+            "<pre class='code'><code>List&lt;Number&gt; a = new ArrayList&lt;Number&gt;();\n" +
             "List&lt;String&gt; b = new ArrayList&lt;String&gt;();\n" +
             "if(a.getClass() != b.getClass()) {\n" +
                 "\tthrow new RuntimeException();\n" +
             "}" +
             "</code></pre>",
-            "<pre><code>int Integer = 3;\n" +
+            "<pre class='code'><code>int Integer = 3;\n" +
             "(Integer) - (Integer)3" +
             "</code></pre>",
-            "<pre><code>new OutputStreamReader(System.out, 'UTF-8').write(''.getBytes())</code></pre>"
+            "<pre class='code'><code>new OutputStreamReader(System.out, 'UTF-8').write(''.getBytes())</code></pre>"
         ],
         solution: 1
     }
@@ -85,10 +85,6 @@ module.exports = {
     },
     check: function(answers) {
         var score = 0, solution = 0;
-
-        if(!Array.isArray(answers)) {
-            answers = answers.split(',');
-        }
 
         for(var i= 0, len = quiz.length; i < len; i++) {
             solution = quiz[i].solution;

@@ -26,10 +26,13 @@ exports.init = function(app, auth/*, express*/) {
         });
     });
 
-    app.get('/data/quiz/check', auth.ensureAuthenticated, function(req, res) {
+    app.post('/data/quiz/check', function(req, res) {
         res.json({
-            score: quiz.check()
+            score: req.body
         });
+//        res.json({
+//            score: quiz.check()
+//        });
     });
 
     app.get('/data/quiz/solution', auth.ensureAuthenticated, function(req, res) {

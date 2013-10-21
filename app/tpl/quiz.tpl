@@ -6,7 +6,7 @@
         <ul class="quiz-list">
         <% _.each(item.answers, function(answer, i) { %>
             <li>
-                <input type="radio" name="<%= item.id %>", value="<%= item.id %>-<%= i %>">
+                <input type="radio" name="quiz_<%= item.id %>", value="<%= i %>">
                 <%= answer %>
             </li>
         <% }); %>

@@ -38,3 +38,16 @@
 #top-wrapper dd {
     /*background-color: #eee;*/
 }
+
+pre.code {
+    padding: 0;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.428571429;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+}

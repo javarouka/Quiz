@@ -16,8 +16,12 @@ define([
     var loadedQuiz = false;
 
     function bindEvent() {
-        $el.entryForm.on("click", "button.open-quiz", function(e) {
+        $el.entryForm.on("click", "button.open-quiz", function(/*e*/) {
             goQuiz.call(exports);
+        });
+        $el.middleContents.on("click", "button[type=submit]", function(e) {
+            e.preventDefault();
+            Quiz.check(MainView.getQuizAnswers(), renderScoreBoard);
         });
     }
 
@@ -25,6 +29,12 @@ define([
         MainView.renderQuizList(data, function() {
             $el.entryForm.slideUp('fast');
             loadedQuiz = true;
+        });
+    }
+
+    function renderScoreBoard(result) {
+        MainView.renderScore(result, function() {
+
         });
     }
 
