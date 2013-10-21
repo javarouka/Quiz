@@ -14,7 +14,8 @@
     "bootstrap": "*",
     "underscore": "*",
     "requirejs": "*",
-    "crosscutting": "*"
+    "crosscutting": "*",
+    "highlightjs": "*"
   },
   "license": "MIT",
   "ignore": [

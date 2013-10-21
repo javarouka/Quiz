@@ -9,6 +9,9 @@ requirejs.config({
     baseUrl: "./",
     paths: {
         'app': "js/app",
+        'highlightjs': [
+          'components/highlightjs/highlight.pack'
+        ],
         'jquery': [
             'components/jquery/jquery.min'
         ],
@@ -25,6 +28,9 @@ requirejs.config({
     shim: {
         'underscore': {
             exports: '_'
+        },
+        'highlightjs': {
+          exports: 'hljs'
         },
         'crosscutting': {
             exports: 'crosscutting'

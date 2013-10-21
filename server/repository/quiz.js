@@ -57,7 +57,7 @@ var quiz = [
         id: 5,
         title: 'Java언어에서 다음 중 런타임 오류가 발생하는 코드는?',
         answers: [
-            "<pre><code>List&lt;Number&gt; n = new ArrayList&lt;Number&gt;();\n" +
+            "<pre><code class='java'>List&lt;Number&gt; n = new ArrayList&lt;Number&gt;();\n" +
             "n.add(20);\n" +
             "</code></pre>",
             "<pre><code>List&lt;Number&gt; a = new ArrayList&lt;Number&gt;();\n" +

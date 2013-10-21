@@ -2,8 +2,8 @@
  * Created by javarouka on 13. 10. 20.
  */
 define([
-    "jquery", "underscore"
-], function($, _) {
+    "jquery", "underscore", "highlightjs"
+], function($, _, hljs) {
 
     var $el = {
         middleContents: $("#middle-contents"),
@@ -20,6 +20,8 @@ define([
                 if(_.isFunction(callback)) {
                     callback();
                 }
+                hljs.tabReplace = '    ';
+                hljs.initHighlighting();
             });
         }
     };
