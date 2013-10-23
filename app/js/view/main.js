@@ -37,6 +37,9 @@ define([
         renderScore: function(result, callback) {
             template("/tpl/score.tpl", result, callback);
         },
+        getInputUserForm: function() {
+            return $el.entryForm.serializeObject();
+        },
         getQuizAnswers: function() {
             return $el.middleContents.find("form.quiz-form").serializeObject();
         }
