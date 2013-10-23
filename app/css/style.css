@@ -1,7 +1,8 @@
 #top-wrapper {
-    width: 95%;
+    width: 96%;
     margin: 10px auto;
     margin-bottom: 35px;
+    min-width: 300px;
     max-width: 800px;
 }
 
@@ -50,4 +51,17 @@ pre.code {
     background-color: transparent;
     border: 0;
     border-radius: 0;
+}
+
+.quiz-result {
+    text-align: center;
+    font-size: 190%;
+}
+.quiz-result h1 {
+    color: #ff5a47;
+    font-size: 220%;
+}
+.quiz-result p,
+.quiz-result div {
+    font-weight: bold;
 }

@@ -8,7 +8,9 @@
     "express": "~3.3.4",
     "passport": "~0.1.17",
     "passport-local": "~0.1.6",
-    "lodash": "~2.2.1"
+    "lodash": "~2.2.1",
+    "sqlite3": "~2.1.18",
+    "sqlite3-transactions": "0.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

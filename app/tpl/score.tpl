@@ -1,3 +1,5 @@
-<h1><%= score %></h1>
-<p><%= message %></p>
-<div><em><%= rank %></em> Rank</div>
+<div class="quiz-result well">
+    <h1><%= result.score %> Point!</h1>
+    <p><%= result.message %></p>
+    <div><em><%= result.rank %></em> Rank</div>
+</div>

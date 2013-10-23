@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Admin</title>
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="top-wrapper">
+    <header>
+        <h1>Quiz 관리자</h1>
+    </header>
+    <section>
+        <div>
+            <a href="/data/user/list" class="btn btn-default">등록 정보 보기</a>
+            <a href="/data/reset" class="btn btn-danger">데이터 초기화</a>
+        </div>
+        <table class="table table-bordered table-responsive">
+            <caption>등록 유저</caption>
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+</div>
+<script src="components/requirejs/require.js" data-main="js/admin"></script>
+</body>
+</html>

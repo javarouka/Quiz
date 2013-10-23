@@ -1,23 +1,13 @@
 /**
- * Created with JetBrains WebStorm.
- * User: javarouka
- * Date: 13. 10. 9
- * Time: 오후 9:02
- * To change this template use File | Settings | File Templates.
+ * Created by javarouka on 13. 10. 24.
  */
 requirejs.config({
     baseUrl: "./",
     waitSeconds: 120,
     paths: {
         'app': "js/app",
-        'highlightjs': [
-          'components/highlightjs/highlight.pack'
-        ],
         'jquery': [
             'components/jquery/jquery.min'
-        ],
-        'crosscutting': [
-            'components/crosscutting/build/crosscutting.min'
         ],
         'underscore': [
             'components/underscore/underscore-min'
@@ -35,7 +25,7 @@ requirejs.config({
             exports: '_'
         },
         'highlightjs': {
-          exports: 'hljs'
+            exports: 'hljs'
         },
         'crosscutting': {
             exports: 'crosscutting'
@@ -48,15 +38,10 @@ requirejs.config({
 });
 require(
     [
-        "app", "crosscutting", "underscore", "bootstrap"
+        "underscore", "bootstrap", "socket.io"
     ],
-    function(App, AOP) {
-        AOP.before(App, true, function(option) {
-            console.log("execute ## " + option.method);
-        });
-        App.init();
+    function(_, $, io) {
     },
     function errorHandler(err) {
-        (console.error || console.log).call(console, err);
     }
 );

@@ -5,12 +5,13 @@
  * To change this template use File | Settings | File Templates.
  */
 var express = require('express'),
-  passport = require('passport'),
-  io = require('socket.io');
+    passport = require('passport'),
+    io = require('socket.io');
 
 var app = express(),
-  route = require("./route.js"),
-  auth = require('./auth.js');
+    route = require("./route.js"),
+    auth = require('./auth.js'),
+    datasource = require("./datasource.js").init();
 
 var config = {
   appPort: 1980,
@@ -35,7 +36,7 @@ app.use(express.csrf({
     value: auth.csrf}
 ));
 app.use(function(req, res, next) {
-  res.cookie('XSRF-TOKEN', req.session._csrf);
+  res.cookie('XSRF-TOKEN', req.csrfToken());
   next();
 });
 

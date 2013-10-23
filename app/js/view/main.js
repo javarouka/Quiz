@@ -8,18 +8,21 @@ define([
 ], function($, _, hljs) {
 
     var $el = {
+        gateAdmin: $(".gate-admin"),
         middleContents: $("#middle-contents"),
         entryForm: $(".entry-form")
     };
 
     var template = function(url, data, cb) {
         $.get(url).then(function(tpl) {
-            $el.middleContents.empty();
-            var complied = _.template(tpl, data);
-            $el.middleContents.html(complied);
-            if(_.isFunction(cb)) {
-                cb();
-            }
+            $el.middleContents.slideUp(200, function() {
+                var complied = _.template(tpl, data);
+                $el.middleContents.html(complied);
+                if(_.isFunction(cb)) {
+                    $el.middleContents.slideDown('fast');
+                    cb();
+                }
+            });
         });
     };
 

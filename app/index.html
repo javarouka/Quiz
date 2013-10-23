@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta name="format-detection" content="telephone=no">
-    <title>Hello JavaCafe Quiz</title>
+    <title>JavaCafe Quiz</title>
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="components/highlightjs/styles/monokai.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <script src="components/requirejs/require.js"></script>
-    <script src="js/main.js"></script>
 </head>
 <body>
 <div id="top-wrapper">
-    <header>
+    <aside class="pull-right">
+        <a href="#admin" class="gate-admin btn btn-info btn btn-xs">Admin!</a>
+    </aside>
+    <header style="clear: both;">
         <h1>Programer Quiz with JavaCafe!</h1>
         <p>아이디를 입력하고, 퀴즈를 시작해봅시다!</p>
     </header>
@@ -23,25 +23,29 @@
         <form class="entry-form" role="form">
             <div class="form-group">
                 <label for="nickname">닉네임</label>
-                <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Enter Nick Name">
+                <input type="text" class="form-control" id="nickname" name="nickname" maxlength="32"
+                       placeholder="닉네임을 입력하세요. 한번 참여한 분은 금일은 재도전할 수 없습니다.">
             </div>
             <div class="form-group">
                 <div class="radio-inline">
                     <label>
-                        <input id="gender" type="radio" name="gender" value="male" checked> 남자
+                        <input id="gender" type="radio" name="gender" value="1" checked> 남자
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" name="gender" value="female"> 여자
+                        <input type="radio" name="gender" value="2"> 여자
                     </label>
                 </div>
             </div>
-            <button type="button" class="open-quiz btn btn-success">Go Go Go!</button>
+            <button type="button" class="open-quiz btn btn-success">퀴즈 풀러가기</button>
         </form>
     </section>
     <section id="middle-contents"></section>
     <footer></footer>
 </div>
+
+<script src="components/requirejs/require.js" data-main="js/main"></script>
+
 </body>
 </html>

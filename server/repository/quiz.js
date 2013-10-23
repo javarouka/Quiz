@@ -6,7 +6,22 @@
  * To change this template use File | Settings | File Templates.
  */
 'use strict';
-var _ = require('lodash');
+var _ = require('lodash'),
+    user = require("./user.js");
+
+var MESSAGE_SET = {
+    0: "노력이 필요할 것 같아요",
+    10: "노력이 필요할 것 같아요",
+    20: "노력이 필요할 것 같아요",
+    30: "조금만 더 공부하면 좋을것 같아요",
+    40: "조금만 더 공부하면 좋을것 같아요",
+    50: "반타작은 했네요",
+    60: "오 훌륭합니다",
+    70: "오 훌륭합니다",
+    80: "오 훌륭합니다",
+    90: "거의 완벽했어요!",
+    100: "당신은 이미 스타 개발자"
+};
 
 var quiz = [
     {
@@ -29,7 +44,7 @@ var quiz = [
             "선언형 프로그래밍 언어",
             "객체 타입과 기본 타입이 함께 사용"
         ],
-        solution: 3
+        solution: 2
     },
     {
         id: 3,
@@ -51,7 +66,7 @@ var quiz = [
             "데니스 리치",
             "비야네 스트로스트럽"
         ],
-        solution: 2
+        solution: 3
     },
     {
         id: 5,
@@ -83,17 +98,54 @@ module.exports = {
             return c;
         });
     },
-    check: function(answers) {
+    check: function(answers, callback) {
+
+        /*
+         "nickname": "dsadas",
+         "gender": "male",
+         "quiz_1": "0",
+         "quiz_2": "3",
+         ...
+         "quiz_n": "n"
+         */
+
         var score = 0, solution = 0;
 
         for(var i= 0, len = quiz.length; i < len; i++) {
             solution = quiz[i].solution;
-            if(solution === answers[i]) {
+            if(solution == answers["quiz_" + (i + 1)]) {
                 score++;
             }
         }
 
-        return score * 10;
+        // @FIXME 메세지 로직 수정 필요
+        var r = score * (100/quiz.length),
+            message = MESSAGE_SET[100];
+
+        for(var k in MESSAGE_SET) {
+            if(MESSAGE_SET.hasOwnProperty(k)) {
+                if(k == score) {
+                    message = MESSAGE_SET[k];
+                }
+                else {
+                    break;
+                }
+            }
+        }
+
+        user.addUser({
+            nickname: answers.nickname,
+            gender: answers.gender,
+            cdt: +new Date(),
+            score: r,
+            clear: answers.elapseTime || 0
+        }, function(err){
+            callback(err, {
+                score: r,
+                message: message,
+                rank: 1
+            });
+        });
     },
     findById: function(id) {
         return _.clone(_.find(quiz, function(q) {
