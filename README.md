@@ -10,6 +10,7 @@ Go to [Node.JS Official Site](http://http://www.nodejs.org/) and Click **Install
 ```bash
 $ npm install grunt-cli -g
 $ npm install bower -g
+$ npm install forever -g
 ```
 
 ### Clone source from github
@@ -26,9 +27,9 @@ $ bower install
 
 ### Start server
 ```C#
-$ node sever/app
+$ forever start sever/app.js
 
-// or run with grunt 
+// or run with grunt only localhost client test
 // grunt server
 ```
 ## Contributor
