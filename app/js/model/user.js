@@ -8,7 +8,7 @@ define([
     var exports = {};
 
     exports.exists = function(user, callback) {
-        var $promise = $.get("/data/user/" + user.nickname);
+        var $promise = $.get("/data/user/" + user.email);
         $promise.always(
             function(data) {
                 callback((data && data.result && !data.user) ? false : true);
@@ -17,7 +17,7 @@ define([
     };
 
     exports.list = function(user, callback) {
-        var $promise = $.get("/data/user/list" + user.nickname);
+        var $promise = $.get("/data/user/list");
         $promise.always(
             function(data) {
                 callback((data && data.result && !data.user) ? false : true);

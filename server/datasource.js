@@ -16,7 +16,7 @@ exports.init = function() {
     DS.USER = new sqlite3.Database('./datasource/user.db');
     DS.USER.serialize(function() {
         DS.USER.run("CREATE TABLE IF NOT EXISTS USER (" +
-            " nickname TEXT" +
+            " email TEXT" +
             " ,gender INTEGER" +
             " ,cdt INTEGER" +
             " ,score INTEGER" +

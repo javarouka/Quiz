@@ -134,7 +134,7 @@ module.exports = {
         }
 
         user.addUser({
-            nickname: answers.nickname,
+            email: answers.email,
             gender: answers.gender,
             cdt: +new Date(),
             score: r,

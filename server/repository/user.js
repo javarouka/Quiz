@@ -6,7 +6,7 @@ var db = datasource.getTable("USER");
 
 var findById = function(id, cb) {
     db.serialize(function() {
-        db.get("SELECT * FROM USER WHERE nickname = ?", {
+        db.get("SELECT * FROM USER WHERE email = ?", {
             1: id
         }, function(err, row) {
             if(cb) {
@@ -23,18 +23,19 @@ exports.clear = function() {
 };
 
 exports.addUser = function(user, cb) {
-    exports.findById(user.nickname, function(err, exists) {
+    exports.findById(user.email, function(err, exists) {
+
         if(exists) {
-            return cb(new Error("exists same nick name > " + user.nickname), exists);
+            return cb(new Error("exists same email > " + user.email), exists);
         }
         db.serialize(function() {
             var stmt = db.prepare(
                 "INSERT INTO USER " +
-                "(nickname, gender, cdt, score, clear) " +
+                "(email, gender, cdt, score, clear) " +
                 "VALUES (?,?,?,?,?)"
             );
             stmt.run(
-                user.nickname,
+                user.email,
                 user.gender,
                 user.cdt,
                 user.score,

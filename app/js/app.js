@@ -64,7 +64,7 @@ define([
         if(!_.isFunction(callback)) {
             return;
         }
-        if(!user.nickname || !user.gender) {
+        if(!user.email || !user.gender) {
             callback(new Error(MESSAGE.fillUserForm));
         }
         else {
