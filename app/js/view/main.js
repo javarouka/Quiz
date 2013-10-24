@@ -38,10 +38,13 @@ define([
       });
     },
     renderScore: function(result, callback) {
+      template("/tpl/all-info.tpl", result, callback);
+    },
+    renderScore: function(result, callback) {
       template("/tpl/score.tpl", result, callback);
     },
-    renderRank: function(callback) {
-      template("/tpl/statistics.tpl", {}, callback);
+    renderRank: function(data, callback) {
+      template("/tpl/statistics.tpl", data, callback);
     },
     getInputUserForm: function() {
       return $el.entryForm.serializeObject();

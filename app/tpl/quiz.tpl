@@ -14,5 +14,5 @@
     </dd>
 <% }); %>
 </dl>
-<button type="submit" class="btn btn-primary">다 풀었어요~!</button>
+<button type="submit" class="ok btn btn-primary">다 풀었어요~!</button>
 </form>

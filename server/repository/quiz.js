@@ -55,7 +55,7 @@ var quiz = [
             "Higher Tool Major Language",
             "How To Make Love"
         ],
-        solution: 2
+        solution: 1
     },
     {
         id: 4,
@@ -113,6 +113,7 @@ module.exports = {
 
         for(var i= 0, len = quiz.length; i < len; i++) {
             solution = quiz[i].solution;
+            console.log(solution, answers["quiz_" + (i + 1)]);
             if(solution == answers["quiz_" + (i + 1)]) {
                 score++;
             }

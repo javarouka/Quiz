@@ -65,3 +65,7 @@ pre.code {
 .quiz-result div {
     font-weight: bold;
 }
+
+.caption-t {
+    background-color: #C3C1E9; padding: 2px 0px 2px 0px; margin-top: 5px; margin-bottom: 5px; font-size: 16px; font-weight: bold;
+}

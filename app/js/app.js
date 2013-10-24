@@ -44,7 +44,7 @@ define([
     $el.entryForm.find("button.view-rank").on("click", function(/*e*/) {
       goRank.call(exports);
     });
-    $el.middleContents.find("button[type=submit]").on("click", function(e) {
+    $el.middleContents.on("click", "button[type=submit]", function(e) {
       e.preventDefault();
       endTime = +new Date();
       Quiz.check(
@@ -101,40 +101,7 @@ define([
   function goRank() {
     Utils.showIndicator();
     Score.statistics(function(data) {
-      MainView.renderRank(function() {
-        console.log(data);
-        var groupGender = data.statistics.groupGender,
-          k;
-        var groupGenderAry = [ ['남', '여'] ];
-        groupGenderAry.push([
-          groupGender[0].CT,
-          groupGender[1].CT
-        ]);
-        console.log(groupGenderAry);
-        var data = google.visualization.arrayToDataTable(groupGenderAry);
-        var chart = new google.visualization.PieChart(document.getElementById('gender-dist'));
-        chart.draw(data, {
-          title: 'My Daily Activities'
-        });
-        /*
-         var data = google.visualization.arrayToDataTable([
-         ['Task', 'Hours per Day'],
-         ['Work',     11],
-         ['Eat',      2],
-         ['Commute',  2],
-         ['Watch TV', 2],
-         ['Sleep',    7]
-         ]);
-
-         var options = {
-         title: 'My Daily Activities'
-         };
-
-         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-         chart.draw(data, options);
-
-
-         */
+      MainView.renderRank(data, function() {
         Utils.hideIndicator();
       });
     }, exports);

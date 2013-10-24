@@ -44,24 +44,24 @@ exports.init = function(app/*, auth, express*/) {
     });
   });
 
-  app.post('/data/quiz/check', function(req, res) {
+app.post('/data/quiz/check', function(req, res) {
     quiz.check(req.body, function(err, result) {
-      res.cookie('join', 'true');
-      res.json({
-        result: err || result
-      });
+        res.cookie('join', 'true');
+        res.json({
+            result: err || result
+        });
     });
-  });
+});
 
   app.get('/data/statistics', function(req, res) {
     var ret = {};
     score.groupGender(function(err, data) {
       ret.groupGender = err || data;
-      score.rankTopN(10, function(err, data) {
+      score.rankTopN(20, function(err, data) {
         ret.rankTopN = data;
-        score.rankByGender(1, 10, function(err, data) {
+        score.rankByGender(1, 20, function(err, data) {
           ret.manRank = data;
-          score.rankByGender(2, 10, function(err, data, db) {
+          score.rankByGender(2, 20, function(err, data, db) {
             ret.womanRank = data;
             res.json({
               result: true,
