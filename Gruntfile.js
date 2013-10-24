@@ -29,19 +29,28 @@ module.exports = function(grunt) {
 //        banner: banner
 //      },
 //      build: {
-//        src: [ 'app/js/app.js' ],
+//        src: [ './app/js/app.js' ],
 //        dest: [ './app/js/*.js' ]
 //      }
 //    },
     watch: {
-      files: [
-        'app/**/*.html',
-        'app/**/*.css',
-        'app/**/*.js',
-        'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-      ],
-      options: {
-        livereload: LIVERELOAD_PORT
+      live: {
+        files: [
+          'app/**/*.html',
+          'app/**/*.css',
+          'app/**/*.js',
+          'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ],
+        options: {
+          livereload: LIVERELOAD_PORT
+        }
+      },
+      scripts: {
+        tasks: ['jshint'],
+        files: './app/js/**/*.js',
+        options: {
+          interrupt: true
+        }
       }
     },
     qunit: {
@@ -103,8 +112,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-open');
 
+  grunt.registerTask('doHint',
+        ['watch:scripts']);
+
   grunt.registerTask('server',
-    ['clean', /*'uglify',*/ 'connect:live', 'open', 'watch']);
+    ['clean', /*'uglify',*/ 'connect:live', 'open', 'watch:live']);
 
   grunt.registerTask('test',
     ['clean', 'copy', 'jshint', 'connect:test', 'qunit']);

@@ -41,7 +41,7 @@ define([
         });
         $el.middleContents.on("click", "button[type=submit]", function(e) {
             e.preventDefault();
-            endTime = +new Date;
+            endTime = +new Date();
             Quiz.check(
                 ($.extend(
                     MainView.getInputUserForm(),
@@ -80,7 +80,7 @@ define([
         MainView.renderQuizList(data, function() {
             $el.entryForm.slideUp('fast');
             loadedQuiz = true;
-            startTime = +new Date;
+            startTime = +new Date();
         });
     }
 
