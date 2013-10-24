@@ -47,7 +47,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         tasks: ['jshint'],
-        files: './app/js/**/*.js',
+        files: ['./app/js/**/*.js', './server/**/*.js' ],
         options: {
           interrupt: true
         }

@@ -15,6 +15,14 @@ define([
         });
     };
 
+    exports.statistics = function(cb) {
+      $.post("/data/quiz/statistics").then(function(data) {
+        if(_.isFunction(cb)) {
+          cb.call(exports, data);
+        }
+      });
+    };
+
     exports.check = function(params, cb) {
         $.post("/data/quiz/check", params).then(function(data) {
             if(_.isFunction(cb)) {

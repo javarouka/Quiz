@@ -7,7 +7,8 @@
     "javarouka <javarouka@gmail.com>"
   ],
   "keywords": [
-    "quiz", "javacafe"
+    "quiz",
+    "javacafe"
   ],
   "dependencies": {
     "jquery": "1.9.1",
@@ -15,7 +16,8 @@
     "underscore": "*",
     "requirejs": "*",
     "crosscutting": "*",
-    "highlightjs": "*"
+    "highlightjs": "*",
+    "requirejs-plugins": "~1.0.2"
   },
   "license": "MIT",
   "ignore": [

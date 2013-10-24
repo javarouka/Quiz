@@ -2,11 +2,19 @@
  * Created by javarouka on 13. 10. 24.
  */
 define([
-    "jquery",
-    "underscore",
-    "socket.io"
+  "jquery",
+  "underscore",
+  "socket.io"
 ], function($, _, io) {
 
-    "use strict";
+  "use strict";
+
+  var exports = {};
+
+  exports.statistics = function(cb) {
+
+  };
+
+  return exports;
 
 });

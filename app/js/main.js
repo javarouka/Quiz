@@ -9,7 +9,16 @@ requirejs.config({
     baseUrl: "./",
     waitSeconds: 120,
     paths: {
+
+         // Application
         'app': "js/app",
+
+        // requirejs plugins
+        'async' : '../components/requirejs-plugins/src/async',
+        'propertyParser' : '../components/requirejs-plugins/src/propertyParser',
+        'goog' : '../components/requirejs-plugins/src/goog',
+
+        // ext modules
         'highlightjs': [
           'components/highlightjs/highlight.pack'
         ],
@@ -48,7 +57,11 @@ requirejs.config({
 });
 require(
     [
-        "app", "crosscutting", "underscore", "bootstrap"
+        "app",
+        "crosscutting",
+        "underscore",
+        "bootstrap",
+        'goog!visualization,1,packages:[corechart,geochart]'
     ],
     function(App, AOP) {
         AOP.before(App, true, function(option) {

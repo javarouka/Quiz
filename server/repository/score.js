@@ -1,21 +1,38 @@
 /**
  * Created by javarouka on 13. 10. 24.
- *
- * @Deprecated
  */
+"use strict";
 var datasource = require("./../datasource.js").init();
-var db = datasource.getTable("score");
+var db = datasource.getTable("USER");
 
-db.serialize(function() {
-    var stmt = db.prepare("INSERT INTO SCORE VALUES (?)");
-    for (var i = 0; i < 10; i++) {
-        stmt.run("Ipsum " + i);
-    }
-    stmt.finalize();
-
-    db.each("SELECT rowid AS id, info FROM SCORE", function(err, row) {
-        console.log(row.id + ": " + row.info);
+exports.groupGender = function(cb) {
+  db.serialize(function() {
+    db.all("SELECT (CASE GENDER WHEN 1 THEN 'man' ELSE 'woman' END) as type, COUNT(GENDER) as CT FROM USER GROUP BY GENDER", function(err, row) {
+      if(cb) {
+        cb(err, row, db);
+      }
     });
-});
+  });
+};
 
-db.close();
+exports.rankTopN  = function(topn, cb) {
+  db.serialize(function() {
+    db.all("SELECT * FROM USER ORDER BY SCORE DESC, CLEAR ASC, CDT ASC LIMIT " + (topn || 10), function(err, row) {
+      if(cb) {
+        cb(err, row, db);
+      }
+    });
+  });
+};
+
+exports.rankByGender  = function(gender, topn, cb) {
+  db.serialize(function() {
+    db.all("SELECT * FROM USER WHERE GENDER = ? ORDER BY SCORE DESC, CLEAR ASC, CDT ASC LIMIT " + (topn || 10), {
+        1: gender
+    },function(err, row) {
+      if(cb) {
+        cb(err, row, db);
+      }
+    });
+  });
+};

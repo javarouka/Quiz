@@ -10,7 +10,7 @@ var findById = function(id, cb) {
             1: id
         }, function(err, row) {
             if(cb) {
-                cb(err, row);
+                cb(err, row, db);
             }
         });
     });
@@ -23,7 +23,7 @@ exports.clear = function() {
 };
 
 exports.addUser = function(user, cb) {
-    exports.findById(user.email, function(err, exists) {
+    exports.findById(user.email, function(err, exists, db) {
 
         if(exists) {
             return cb(new Error("exists same email > " + user.email), exists);
@@ -58,7 +58,7 @@ exports.list = function(cb) {
 exports.findById = findById;
 
 exports.list(function(err, registedUsers){
-   if(!err && Array.isArray(registedUsers)) {
+   if(!err && Array.isArray(registedUsers) && registedUsers.length) {
        console.log("registed users list >");
        registedUsers.forEach(function(user) {
            console.log(user);

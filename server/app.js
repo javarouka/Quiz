@@ -14,7 +14,7 @@ var app = express(),
     datasource = require("./datasource.js").init();
 
 var config = {
-  appPort: 1980,
+  appPort: 10000,
   staticPath: __dirname + '/../app'
 };
 
