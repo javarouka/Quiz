@@ -35,7 +35,10 @@ $ forever start sever/app.js
 ## Contributor
 ![javarouka](http://www.gravatar.com/avatar/ea49d570a6a8654adf6c0b8d90e51290?s=100)
 
+**[javarouka@gmail.com](mailto://javarouka@gmail.com)**
+
 ## Forker
 ![redrebel](http://www.gravatar.com/avatar/78fecaedf19bccaa6fb864a0fb09c78d.png)
 
-**[javarouka@gmail.com](mailto://javarouka@gmail.com)**
+**[cjred77@gmail.com](mailto://cjred77@gmail.com)**
+
