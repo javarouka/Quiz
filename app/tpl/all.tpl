@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <% _.each(alluser, function(item, i) { %>
+    <% _.each(list, function(item, i) { %>
         <tr>
         <td><%= (i+1) %></td>
         <td><%= (item.email || "알수없음") %></td>

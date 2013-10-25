@@ -37,8 +37,8 @@ define([
         }
       });
     },
-    renderScore: function(result, callback) {
-      template("/tpl/all-info.tpl", result, callback);
+    renderUserList: function(result, callback) {
+      template("/tpl/all.tpl", result, callback);
     },
     renderScore: function(result, callback) {
       template("/tpl/score.tpl", result, callback);

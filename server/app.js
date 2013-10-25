@@ -19,26 +19,10 @@ var config = {
 };
 
 app.use(express.logger('dev'));
-//
-//app.use(function staticsPlaceholder(req, res, next) {
-//  return next();
-//});
-
 app.use(express.cookieParser());
-//app.use(express.session({
-//  secret: 'I am a full-stack developer'
-//}));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-
-//app.use(express.csrf({
-//    value: auth.csrf}
-//));
-//app.use(function(req, res, next) {
-//  res.cookie('XSRF-TOKEN', req.csrfToken());
-//  next();
-//});
 
 app.use(express.static(config.staticPath));
 

@@ -37,7 +37,7 @@
                 <tbody>
                 <% _.each(statistics.groupGender, function(item, i) { %>
                     <tr>
-                    <td><%= item.gender == 'man' ? '남' : '여' %></td>
+                    <td><%= item.type == 'man' ? '남' : '여' %></td>
                     <td><%= item.CT %></td>
                 <% }); %>
                 </tbody>

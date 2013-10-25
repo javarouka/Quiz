@@ -35,7 +35,7 @@ exports.init = function(app/*, auth, express*/) {
     });
   });
 
-  app.get('/data/user/list', function(req, res) {
+  app.get('/data/user-list', function(req, res) {
     user.list(function(err, list){
       res.json({
         result: !err,
@@ -43,15 +43,22 @@ exports.init = function(app/*, auth, express*/) {
       });
     });
   });
-
-app.post('/data/quiz/check', function(req, res) {
-    quiz.check(req.body, function(err, result) {
-        res.cookie('join', 'true');
-        res.json({
-            result: err || result
-        });
+  app.delete('/data/user', function(req, res) {
+    user.clear(function(err){
+      res.json({
+        result: !err
+      });
     });
-});
+  });
+
+  app.post('/data/quiz/check', function(req, res) {
+    quiz.check(req.body, function(err, result) {
+//      res.cookie('join', 'true');
+      res.json({
+        result: err || result
+      });
+    });
+  });
 
   app.get('/data/statistics', function(req, res) {
     var ret = {};

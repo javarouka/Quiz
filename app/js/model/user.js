@@ -16,11 +16,11 @@ define([
         );
     };
 
-    exports.list = function(user, callback) {
-        var $promise = $.get("/data/user/list");
+    exports.list = function(callback) {
+        var $promise = $.get("/data/user-list");
         $promise.always(
             function(data) {
-                callback((data && data.result && !data.user) ? false : true);
+                callback((data && data.result && data.list) ? data : {});
             }
         );
     };
