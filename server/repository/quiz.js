@@ -165,26 +165,14 @@ module.exports = {
 
     for(var i= 0, len = quiz.length; i < len; i++) {
       solution = quiz[i].solution;
-      console.log(solution, answers["quiz_" + (i + 1)]);
       if(solution == answers["quiz_" + (i + 1)]) {
-        score++;
+        score += 1;
       }
     }
 
     // @FIXME 메세지 로직 수정 필요
-    var r = score * (100/quiz.length),
-      message = MESSAGE_SET[100];
-
-    for(var k in MESSAGE_SET) {
-      if(MESSAGE_SET.hasOwnProperty(k)) {
-        if(k == score) {
-          message = MESSAGE_SET[k];
-        }
-        else {
-          break;
-        }
-      }
-    }
+    var r = score * 10,
+      message = MESSAGE_SET[r];
 
     user.addUser({
       email: answers.email,
@@ -195,8 +183,7 @@ module.exports = {
     }, function(err){
       callback(err, {
         score: r,
-        message: message,
-        rank: 1
+        message: message
       });
     });
   },
