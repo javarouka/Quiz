@@ -11,20 +11,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="top-wrapper">
+<div id="top-wrapper" class="row">
     <aside class="pull-right">
-        <a href="#admin" class="gate-admin btn btn-info btn btn-xs">Admin!</a>
+        <a href="./admin.html" class="gate-admin btn btn-danger btn btn-xs">Admin!</a>
     </aside>
-    <header style="clear: both;">
-        <h1>Programer Quiz with JavaCafe!</h1>
-        <p>아이디를 입력하고, 퀴즈를 시작해봅시다!</p>
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Programer Quiz <small>with JavaCafe!</small></h1>
+            <p>이메일을 입력하고, 퀴즈를 시작해봅시다!</p>
+        </div>
     </header>
     <section>
         <form class="entry-form" role="form">
             <div class="form-group">
                 <label for="email">이메일</label>
                 <input type="text" class="form-control" id="email" name="email" maxlength="128"
-                       placeholder="example@email.com :: 참여한 분은 당일 재도전 No!">
+                       placeholder="example@email.com">
             </div>
             <div class="form-group">
                 <div class="radio-inline">
@@ -38,8 +40,8 @@
                     </label>
                 </div>
             </div>
-            <button type="button" class="open-quiz btn btn-success">퀴즈 풀러가기</button>
-            <button type="button" class="view-rank btn btn-success">랭킹 보기</button>
+            <button type="button" class="open-quiz btn btn-success btn-sm">퀴즈 풀러가기</button>
+            <button type="button" class="view-rank btn btn-success btn-sm">랭킹 보기</button>
         </form>
     </section>
     <section id="middle-contents"></section>

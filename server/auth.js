@@ -14,6 +14,7 @@ var User = require('./repository/admins');
 module.exports = {
     localStrategy: new LocalStrategy(
         function(username, password, done) {
+            console.log(username, password);
             var user = User.findByUsername(username);
 
             if(!user) {

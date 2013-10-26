@@ -37,6 +37,9 @@ define([
         }
       });
     },
+    renderLoginForm: function(data, callback) {
+      template("/tpl/login.tpl", data, callback);
+    },
     renderUserList: function(result, callback) {
       template("/tpl/all.tpl", result, callback);
     },

@@ -7,6 +7,15 @@ define([
 
     var exports = {};
 
+    exports.isAdminLogin = function(callback) {
+        var $promise = $.get("/data/is-login");
+        $promise.always(
+            function(data) {
+                callback(data && data.isLogin);
+            }
+        );
+    };
+
     exports.exists = function(user, callback) {
         var $promise = $.get("/data/user/" + user.email);
         $promise.always(

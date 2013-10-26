@@ -11,7 +11,8 @@ var quiz = require("./repository/quiz"),
   user = require("./repository/user"),
   score = require("./repository/score");
 
-exports.init = function(app/*, auth, express*/) {
+exports.init = function(app, auth/*, express*/) {
+
   app.get('/', function(req, res) {
     res.writeHead(302, {
       'Location': "/index.html"
@@ -26,6 +27,10 @@ exports.init = function(app/*, auth, express*/) {
         user: user || false
       });
     });
+  });
+
+  app.get('/data/is-login', function(req, res) {
+    res.json({ isLogin: req.isAuthenticated() });
   });
 
   app.get('/data/quiz/list', function(req, res) {

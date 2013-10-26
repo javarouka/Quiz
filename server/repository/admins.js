@@ -21,6 +21,7 @@ module.exports = {
   },
 
   findByUsername: function(username) {
+      console.log("1111");
     return _.clone(_.find(admins, function(admin) { return admin.username === username; }));
   }
 };

@@ -1,4 +1,5 @@
 <div>
+    <button id="logout"type="button">로그아웃</button>
     <table class="table table-striped">
     <caption class="caption-t">유저</caption>
     <thead>

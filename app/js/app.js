@@ -31,10 +31,6 @@ define([
   }
 
   function bindEvent() {
-    $el.gateAdmin.on("click", function(e) {
-      e.preventDefault();
-      alert("prepare!");
-    });
     $el.entryForm.on("submit", function(e) {
       e.preventDefault();
     });
