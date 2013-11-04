@@ -65,7 +65,7 @@ require(
     ],
     function(App, AOP) {
         AOP.before(App, true, function(option) {
-            console.log("execute ## " + option.method);
+//            console.log("execute ## " + option.method);
         });
         App.init();
     },

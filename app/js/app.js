@@ -9,7 +9,8 @@ define([
   "js/model/score",
   "js/model/user",
   "js/view/main",
-  "js/utils"
+  "js/utils",
+  "js/model/prototype-test"
 ], function($, _, io, Quiz, Score, User, MainView, Utils) {
 
   var MESSAGE = {

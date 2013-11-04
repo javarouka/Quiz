@@ -72,6 +72,29 @@ require(
         }
     });
 
+
+      function aa() {
+          var defer = $.Deferred();
+          setTimeout(function() {
+              defer.resolve(2000);
+          }, 2000);
+          return defer.promise();
+      }
+
+      aa().then(function(v) {
+              console.log(arguments);
+          return v;
+
+          }).done(function(v) {
+              console.log(arguments);
+
+          }).done(function(v) {
+              console.log(arguments);
+
+          });
+
+
+
     $(document.body).on("click", "#logout", function() {
       $.ajax({
           url: '/logout',
@@ -91,16 +114,21 @@ require(
           username: $("#id").val(),
           password: $("#password").val()
         }
-      }).done(function() {
+      }).then(
+        function() {
           User.list(function(userList) {
-              View.renderUserList(userList, function() {
-                  // do Some
-              });
+            View.renderUserList(userList, function() {
+                // do Some
+            });
           });
-
-      }).fail(function() {
-        alert("패스워드와 아이디를 제대로 입력해주세요");
-      });
+        },
+        function() {
+          alert("패스워드와 아이디를 제대로 입력해주세요");
+        },
+          function(r) {
+              console.log(arguments);
+          }
+      );
     });
 
     $(document.body).on("click", "#reset-info", function() {
